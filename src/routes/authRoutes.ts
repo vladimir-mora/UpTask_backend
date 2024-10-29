@@ -127,7 +127,7 @@ router.post(
     .withMessage("La contraseña debe tener al menos 8 caracteres"),
   body("password_confirmation").custom((value, { req }) => {
     if (value !== req.body.password) {
-      throw new Error("Las contraseñas no coinciden");
+      throw new Error("Las contraseñas no coinciden ");
     }
     return true;
   }),
