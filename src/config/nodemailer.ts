@@ -1,11 +1,14 @@
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
-import { MailtrapTransport } from "mailtrap";
+import sendgridTransport from "nodemailer-sendgrid-transport";
+
 dotenv.config();
 
 const config = () => {
-  return MailtrapTransport({
-    token: process.env.MAILTRAP_TOKEN,
+  return sendgridTransport({
+    auth: {
+      api_key: process.env.SENDGRID_API_KEY!,
+    },
   });
 };
 
