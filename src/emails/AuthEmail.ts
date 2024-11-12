@@ -11,8 +11,9 @@ interface IEmail {
 export class AuthEmail {
   static sendEmail = async (user: IEmail) => {
     try {
+      console.log("Intentando enviar correo de confirmación a:", user.email); // Log de inicio
       const info = await transporter.sendMail({
-        from: "UpTask <admin@admin.com>",
+        from: "UpTask <vladimirescalante75@gmail.com>",
         to: user.email,
         subject: "UpTask - Confirm your account",
         text: "UpTask - confirm your account",
@@ -23,7 +24,7 @@ export class AuthEmail {
                <p>Este token expira en 10 minutos</p>
              `,
       });
-      console.log("Correo de confirmación enviado:", info.messageId);
+      console.log("Correo de confirmación enviado con éxito:", info.messageId);
     } catch (error) {
       console.error("Error al enviar correo de confirmación:", error);
     }
@@ -31,8 +32,12 @@ export class AuthEmail {
 
   static sendResetPasswordEmail = async (user: IEmail) => {
     try {
+      console.log(
+        "Intentando enviar correo de restablecimiento a:",
+        user.email
+      ); // Log de inicio
       const info = await transporter.sendMail({
-        from: "UpTask <admin@admin.com>",
+        from: "UpTask <vladimirescalante75@gmail.com>",
         to: user.email,
         subject: "UpTask - Reestablece tu password",
         text: "UpTask - Reestablece tu password",
